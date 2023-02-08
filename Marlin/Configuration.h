@@ -667,9 +667,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 15.95
-    #define DEFAULT_Ki  1.30
-    #define DEFAULT_Kd 48.96
+    #define DEFAULT_Kp 18.36
+    #define DEFAULT_Ki 1.96
+    #define DEFAULT_Kd 43.01
   #endif
 #endif
 
@@ -752,9 +752,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 110.38
-  #define DEFAULT_bedKi 6.12
-  #define DEFAULT_bedKd 497.3
+  #define DEFAULT_bedKp 173.63
+  #define DEFAULT_bedKi 28.14
+  #define DEFAULT_bedKd 714.19
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1168,7 +1168,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 691.5 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 685.76 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1923,7 +1923,7 @@
    */
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 0 // (mm) Default fade height.
+    #define DEFAULT_LEVELING_FADE_HEIGHT 10 // (mm) Default fade height.
   #endif
 
   /**
@@ -1986,10 +1986,10 @@
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 35             // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
-  #define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
+  //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500
