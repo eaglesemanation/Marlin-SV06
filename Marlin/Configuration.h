@@ -1483,7 +1483,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 25, -25, -2 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1630,7 +1630,7 @@
 //#define DISABLE_W false
 
 // Turn off the display blinking that warns about possible accuracy reduction
-#define DISABLE_REDUCED_ACCURACY_WARNING
+//#define DISABLE_REDUCED_ACCURACY_WARNING
 
 // @section extruder
 
@@ -1665,7 +1665,7 @@
 // @section homing
 
 #define NO_MOTION_BEFORE_HOMING // Inhibit movement until all axes have been homed. Also enable HOME_AFTER_DEACTIVATE for extra safety.
-#define HOME_AFTER_DEACTIVATE   // Require rehoming after steppers are deactivated. Also enable NO_MOTION_BEFORE_HOMING for extra safety.
+//#define HOME_AFTER_DEACTIVATE // Require rehoming after steppers are deactivated. Also enable NO_MOTION_BEFORE_HOMING for extra safety.
 
 /**
  * Set Z_IDLE_HEIGHT if the Z-Axis moves on its own when steppers are disabled.
@@ -1983,13 +1983,13 @@
   //========================= Unified Bed Leveling ============================
   //===========================================================================
 
-  //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
+  #define MESH_EDIT_GFX_OVERLAY     // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 35             // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 5      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5       // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
-  //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
+  #define UBL_HILBERT_CURVE         // Use Hilbert distribution for less travel when probing multiple points
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500
@@ -2026,7 +2026,7 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-#define LCD_BED_TRAMMING
+//#define LCD_BED_TRAMMING
 
 #if ENABLED(LCD_BED_TRAMMING)
   #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
@@ -2098,7 +2098,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (8*60) }
+#define HOMING_FEEDRATE_MM_M { (45*60), (45*60), (8*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2468,7 +2468,7 @@
  *
  * Use CRC checks and retries on the SD communication.
  */
-//#define SD_CHECK_AND_RETRY
+#define SD_CHECK_AND_RETRY
 
 /**
  * LCD Menu Items
@@ -2550,7 +2550,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+//#define SPEAKER // TODO: Figure out how to enable it without crashing UI
 
 //
 // The duration and frequency for the UI feedback sound.
@@ -2840,8 +2840,10 @@
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
 #define CR10_STOCKDISPLAY
-// Sovol SV06 pins file needs this for display support
-#define RET6_12864_LCD
+#if ENABLED(CR10_STOCKDISPLAY)
+  #define RET6_12864_LCD  // Specific to the SoC (can either be RET / VET)
+#endif
+
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864
